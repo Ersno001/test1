@@ -1,4 +1,3 @@
-
 import os
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
@@ -33,6 +32,10 @@ with app.app_context():
     db.create_all()
 
 # --- Routes ---
+@app.route("/", methods=["GET"])
+def home():
+    return jsonify({"message": "Добро пожаловать на DAYDREAM"})
+
 @app.route("/register", methods=["POST"])
 def register():
     data = request.json
